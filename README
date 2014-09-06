@@ -1,0 +1,16 @@
+cleandir
+========
+
+Super duper small script using inotify to find closed files and delete them
+once they're closed. Useful for instantly removing files uploaded to an ftp
+server (for speedtest purposes) as to not fill up the file system.
+
+Usage
+-----
+Modify the WATCH_DIR in the source and then just run the script with something
+like `cleandir.py &`. Perhaps put it in some startup file so it is started on
+boot.
+
+Todo
+----
+Should be able to daemonize and configure it, perhaps through command line args?
