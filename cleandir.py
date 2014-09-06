@@ -38,8 +38,10 @@ mask = pyinotify.IN_CLOSE_WRITE | pyinotify.IN_CLOSE_NOWRITE # watched events
 
 class EventHandler(pyinotify.ProcessEvent):
     def process_IN_CLOSE(self, event):
-        # remove that file, haha!
-        os.remove(event.pathname)
+        # don't remove the watched directory itself
+        if event.pathname != WATCH_DIR:
+            # remove that file, haha!
+            os.remove(event.pathname)
 
 handler = EventHandler()
 notifier = pyinotify.Notifier(wm, handler)
